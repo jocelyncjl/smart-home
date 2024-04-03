@@ -1,0 +1,20 @@
+syntax = "proto3";
+option java_multiple_files = false;
+option java_package = "com.light";
+option java_outer_classname = "HelloLightProto";
+
+message LightRequest{
+  string lightcall = 1;
+}
+
+message LightResponse{
+  string lightResult = 1;
+}
+
+service HelloLight{
+  rpc lightService(LightRequest) returns (LightResponse);
+}
+
+
+
+
