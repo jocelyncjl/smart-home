@@ -4,13 +4,14 @@ option java_package = "com.temperature";
 option java_outer_classname = "HelloTemperatureProto";
 
 message TemperatureRequest{
-  string temperatureCall = 1;
+  string tempCall = 1;
 }
 
 message TemperatureResponse{
-  string temperatureResult = 1;
+  string homeArea = 1;
+  double degreeCelsius = 2;
 }
 
 service HelloTemperature{
-  rpc temperatureService(TemperatureRequest)  returns (TemperatureResponse);
+  rpc temperatureService(TemperatureRequest)  returns ( stream TemperatureResponse);
 }

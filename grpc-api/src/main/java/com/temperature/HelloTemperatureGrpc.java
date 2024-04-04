@@ -15,29 +15,29 @@ public final class HelloTemperatureGrpc {
   public static final String SERVICE_NAME = "HelloTemperature";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.temperature.HelloTemperatureProto.TemperatureRequest,
-      com.temperature.HelloTemperatureProto.TemperatureResponse> getTemperatureServiceMethod;
+  private static volatile io.grpc.MethodDescriptor<HelloTemperatureProto.TemperatureRequest,
+      HelloTemperatureProto.TemperatureResponse> getTemperatureServiceMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "temperatureService",
-      requestType = com.temperature.HelloTemperatureProto.TemperatureRequest.class,
-      responseType = com.temperature.HelloTemperatureProto.TemperatureResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.temperature.HelloTemperatureProto.TemperatureRequest,
-      com.temperature.HelloTemperatureProto.TemperatureResponse> getTemperatureServiceMethod() {
-    io.grpc.MethodDescriptor<com.temperature.HelloTemperatureProto.TemperatureRequest, com.temperature.HelloTemperatureProto.TemperatureResponse> getTemperatureServiceMethod;
+      requestType = HelloTemperatureProto.TemperatureRequest.class,
+      responseType = HelloTemperatureProto.TemperatureResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<HelloTemperatureProto.TemperatureRequest,
+      HelloTemperatureProto.TemperatureResponse> getTemperatureServiceMethod() {
+    io.grpc.MethodDescriptor<HelloTemperatureProto.TemperatureRequest, HelloTemperatureProto.TemperatureResponse> getTemperatureServiceMethod;
     if ((getTemperatureServiceMethod = HelloTemperatureGrpc.getTemperatureServiceMethod) == null) {
       synchronized (HelloTemperatureGrpc.class) {
         if ((getTemperatureServiceMethod = HelloTemperatureGrpc.getTemperatureServiceMethod) == null) {
           HelloTemperatureGrpc.getTemperatureServiceMethod = getTemperatureServiceMethod =
-              io.grpc.MethodDescriptor.<com.temperature.HelloTemperatureProto.TemperatureRequest, com.temperature.HelloTemperatureProto.TemperatureResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              io.grpc.MethodDescriptor.<HelloTemperatureProto.TemperatureRequest, HelloTemperatureProto.TemperatureResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "temperatureService"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.temperature.HelloTemperatureProto.TemperatureRequest.getDefaultInstance()))
+                  HelloTemperatureProto.TemperatureRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.temperature.HelloTemperatureProto.TemperatureResponse.getDefaultInstance()))
+                  HelloTemperatureProto.TemperatureResponse.getDefaultInstance()))
               .setSchemaDescriptor(new HelloTemperatureMethodDescriptorSupplier("temperatureService"))
               .build();
         }
@@ -96,8 +96,8 @@ public final class HelloTemperatureGrpc {
 
     /**
      */
-    default void temperatureService(com.temperature.HelloTemperatureProto.TemperatureRequest request,
-        io.grpc.stub.StreamObserver<com.temperature.HelloTemperatureProto.TemperatureResponse> responseObserver) {
+    default void temperatureService(HelloTemperatureProto.TemperatureRequest request,
+                                    io.grpc.stub.StreamObserver<HelloTemperatureProto.TemperatureResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTemperatureServiceMethod(), responseObserver);
     }
   }
@@ -131,9 +131,9 @@ public final class HelloTemperatureGrpc {
 
     /**
      */
-    public void temperatureService(com.temperature.HelloTemperatureProto.TemperatureRequest request,
-        io.grpc.stub.StreamObserver<com.temperature.HelloTemperatureProto.TemperatureResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
+    public void temperatureService(HelloTemperatureProto.TemperatureRequest request,
+                                   io.grpc.stub.StreamObserver<HelloTemperatureProto.TemperatureResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getTemperatureServiceMethod(), getCallOptions()), request, responseObserver);
     }
   }
@@ -156,8 +156,9 @@ public final class HelloTemperatureGrpc {
 
     /**
      */
-    public com.temperature.HelloTemperatureProto.TemperatureResponse temperatureService(com.temperature.HelloTemperatureProto.TemperatureRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+    public java.util.Iterator<HelloTemperatureProto.TemperatureResponse> temperatureService(
+        HelloTemperatureProto.TemperatureRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getTemperatureServiceMethod(), getCallOptions(), request);
     }
   }
@@ -176,14 +177,6 @@ public final class HelloTemperatureGrpc {
     protected HelloTemperatureFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new HelloTemperatureFutureStub(channel, callOptions);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.temperature.HelloTemperatureProto.TemperatureResponse> temperatureService(
-        com.temperature.HelloTemperatureProto.TemperatureRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getTemperatureServiceMethod(), getCallOptions()), request);
     }
   }
 
@@ -207,8 +200,8 @@ public final class HelloTemperatureGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_TEMPERATURE_SERVICE:
-          serviceImpl.temperatureService((com.temperature.HelloTemperatureProto.TemperatureRequest) request,
-              (io.grpc.stub.StreamObserver<com.temperature.HelloTemperatureProto.TemperatureResponse>) responseObserver);
+          serviceImpl.temperatureService((HelloTemperatureProto.TemperatureRequest) request,
+              (io.grpc.stub.StreamObserver<HelloTemperatureProto.TemperatureResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -230,10 +223,10 @@ public final class HelloTemperatureGrpc {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
           getTemperatureServiceMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
-              com.temperature.HelloTemperatureProto.TemperatureRequest,
-              com.temperature.HelloTemperatureProto.TemperatureResponse>(
+              HelloTemperatureProto.TemperatureRequest,
+              HelloTemperatureProto.TemperatureResponse>(
                 service, METHODID_TEMPERATURE_SERVICE)))
         .build();
   }
@@ -244,7 +237,7 @@ public final class HelloTemperatureGrpc {
 
     @Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.temperature.HelloTemperatureProto.getDescriptor();
+      return HelloTemperatureProto.getDescriptor();
     }
 
     @Override

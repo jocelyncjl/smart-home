@@ -20,16 +20,16 @@ public final class HelloTemperatureProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string temperatureCall = 1;</code>
-     * @return The temperatureCall.
+     * <code>string tempCall = 1;</code>
+     * @return The tempCall.
      */
-    String getTemperatureCall();
+    String getTempCall();
     /**
-     * <code>string temperatureCall = 1;</code>
-     * @return The bytes for temperatureCall.
+     * <code>string tempCall = 1;</code>
+     * @return The bytes for tempCall.
      */
     com.google.protobuf.ByteString
-        getTemperatureCallBytes();
+        getTempCallBytes();
   }
   /**
    * Protobuf type {@code TemperatureRequest}
@@ -44,7 +44,7 @@ public final class HelloTemperatureProto {
       super(builder);
     }
     private TemperatureRequest() {
-      temperatureCall_ = "";
+      tempCall_ = "";
     }
 
     @Override
@@ -67,39 +67,39 @@ public final class HelloTemperatureProto {
               TemperatureRequest.class, Builder.class);
     }
 
-    public static final int TEMPERATURECALL_FIELD_NUMBER = 1;
+    public static final int TEMPCALL_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private volatile Object temperatureCall_ = "";
+    private volatile Object tempCall_ = "";
     /**
-     * <code>string temperatureCall = 1;</code>
-     * @return The temperatureCall.
+     * <code>string tempCall = 1;</code>
+     * @return The tempCall.
      */
     @Override
-    public String getTemperatureCall() {
-      Object ref = temperatureCall_;
+    public String getTempCall() {
+      Object ref = tempCall_;
       if (ref instanceof String) {
         return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         String s = bs.toStringUtf8();
-        temperatureCall_ = s;
+        tempCall_ = s;
         return s;
       }
     }
     /**
-     * <code>string temperatureCall = 1;</code>
-     * @return The bytes for temperatureCall.
+     * <code>string tempCall = 1;</code>
+     * @return The bytes for tempCall.
      */
     @Override
     public com.google.protobuf.ByteString
-        getTemperatureCallBytes() {
-      Object ref = temperatureCall_;
+        getTempCallBytes() {
+      Object ref = tempCall_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (String) ref);
-        temperatureCall_ = b;
+        tempCall_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -120,8 +120,8 @@ public final class HelloTemperatureProto {
     @Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(temperatureCall_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, temperatureCall_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tempCall_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, tempCall_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -132,8 +132,8 @@ public final class HelloTemperatureProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(temperatureCall_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, temperatureCall_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(tempCall_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, tempCall_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -150,8 +150,8 @@ public final class HelloTemperatureProto {
       }
       TemperatureRequest other = (TemperatureRequest) obj;
 
-      if (!getTemperatureCall()
-          .equals(other.getTemperatureCall())) return false;
+      if (!getTempCall()
+          .equals(other.getTempCall())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -163,8 +163,8 @@ public final class HelloTemperatureProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + TEMPERATURECALL_FIELD_NUMBER;
-      hash = (53 * hash) + getTemperatureCall().hashCode();
+      hash = (37 * hash) + TEMPCALL_FIELD_NUMBER;
+      hash = (53 * hash) + getTempCall().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -296,7 +296,7 @@ public final class HelloTemperatureProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        temperatureCall_ = "";
+        tempCall_ = "";
         return this;
       }
 
@@ -331,7 +331,7 @@ public final class HelloTemperatureProto {
       private void buildPartial0(TemperatureRequest result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.temperatureCall_ = temperatureCall_;
+          result.tempCall_ = tempCall_;
         }
       }
 
@@ -379,8 +379,8 @@ public final class HelloTemperatureProto {
 
       public Builder mergeFrom(TemperatureRequest other) {
         if (other == TemperatureRequest.getDefaultInstance()) return this;
-        if (!other.getTemperatureCall().isEmpty()) {
-          temperatureCall_ = other.temperatureCall_;
+        if (!other.getTempCall().isEmpty()) {
+          tempCall_ = other.tempCall_;
           bitField0_ |= 0x00000001;
           onChanged();
         }
@@ -411,7 +411,7 @@ public final class HelloTemperatureProto {
                 done = true;
                 break;
               case 10: {
-                temperatureCall_ = input.readStringRequireUtf8();
+                tempCall_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
@@ -432,73 +432,73 @@ public final class HelloTemperatureProto {
       }
       private int bitField0_;
 
-      private Object temperatureCall_ = "";
+      private Object tempCall_ = "";
       /**
-       * <code>string temperatureCall = 1;</code>
-       * @return The temperatureCall.
+       * <code>string tempCall = 1;</code>
+       * @return The tempCall.
        */
-      public String getTemperatureCall() {
-        Object ref = temperatureCall_;
+      public String getTempCall() {
+        Object ref = tempCall_;
         if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           String s = bs.toStringUtf8();
-          temperatureCall_ = s;
+          tempCall_ = s;
           return s;
         } else {
           return (String) ref;
         }
       }
       /**
-       * <code>string temperatureCall = 1;</code>
-       * @return The bytes for temperatureCall.
+       * <code>string tempCall = 1;</code>
+       * @return The bytes for tempCall.
        */
       public com.google.protobuf.ByteString
-          getTemperatureCallBytes() {
-        Object ref = temperatureCall_;
+          getTempCallBytes() {
+        Object ref = tempCall_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (String) ref);
-          temperatureCall_ = b;
+          tempCall_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string temperatureCall = 1;</code>
-       * @param value The temperatureCall to set.
+       * <code>string tempCall = 1;</code>
+       * @param value The tempCall to set.
        * @return This builder for chaining.
        */
-      public Builder setTemperatureCall(
+      public Builder setTempCall(
           String value) {
         if (value == null) { throw new NullPointerException(); }
-        temperatureCall_ = value;
+        tempCall_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>string temperatureCall = 1;</code>
+       * <code>string tempCall = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTemperatureCall() {
-        temperatureCall_ = getDefaultInstance().getTemperatureCall();
+      public Builder clearTempCall() {
+        tempCall_ = getDefaultInstance().getTempCall();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       /**
-       * <code>string temperatureCall = 1;</code>
-       * @param value The bytes for temperatureCall to set.
+       * <code>string tempCall = 1;</code>
+       * @param value The bytes for tempCall to set.
        * @return This builder for chaining.
        */
-      public Builder setTemperatureCallBytes(
+      public Builder setTempCallBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        temperatureCall_ = value;
+        tempCall_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
@@ -572,16 +572,22 @@ public final class HelloTemperatureProto {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string temperatureResult = 1;</code>
-     * @return The temperatureResult.
+     * <code>string homeArea = 1;</code>
+     * @return The homeArea.
      */
-    String getTemperatureResult();
+    String getHomeArea();
     /**
-     * <code>string temperatureResult = 1;</code>
-     * @return The bytes for temperatureResult.
+     * <code>string homeArea = 1;</code>
+     * @return The bytes for homeArea.
      */
     com.google.protobuf.ByteString
-        getTemperatureResultBytes();
+        getHomeAreaBytes();
+
+    /**
+     * <code>double degreeCelsius = 2;</code>
+     * @return The degreeCelsius.
+     */
+    double getDegreeCelsius();
   }
   /**
    * Protobuf type {@code TemperatureResponse}
@@ -596,7 +602,7 @@ public final class HelloTemperatureProto {
       super(builder);
     }
     private TemperatureResponse() {
-      temperatureResult_ = "";
+      homeArea_ = "";
     }
 
     @Override
@@ -619,43 +625,54 @@ public final class HelloTemperatureProto {
               TemperatureResponse.class, Builder.class);
     }
 
-    public static final int TEMPERATURERESULT_FIELD_NUMBER = 1;
+    public static final int HOMEAREA_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private volatile Object temperatureResult_ = "";
+    private volatile Object homeArea_ = "";
     /**
-     * <code>string temperatureResult = 1;</code>
-     * @return The temperatureResult.
+     * <code>string homeArea = 1;</code>
+     * @return The homeArea.
      */
     @Override
-    public String getTemperatureResult() {
-      Object ref = temperatureResult_;
+    public String getHomeArea() {
+      Object ref = homeArea_;
       if (ref instanceof String) {
         return (String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         String s = bs.toStringUtf8();
-        temperatureResult_ = s;
+        homeArea_ = s;
         return s;
       }
     }
     /**
-     * <code>string temperatureResult = 1;</code>
-     * @return The bytes for temperatureResult.
+     * <code>string homeArea = 1;</code>
+     * @return The bytes for homeArea.
      */
     @Override
     public com.google.protobuf.ByteString
-        getTemperatureResultBytes() {
-      Object ref = temperatureResult_;
+        getHomeAreaBytes() {
+      Object ref = homeArea_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (String) ref);
-        temperatureResult_ = b;
+        homeArea_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int DEGREECELSIUS_FIELD_NUMBER = 2;
+    private double degreeCelsius_ = 0D;
+    /**
+     * <code>double degreeCelsius = 2;</code>
+     * @return The degreeCelsius.
+     */
+    @Override
+    public double getDegreeCelsius() {
+      return degreeCelsius_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -672,8 +689,11 @@ public final class HelloTemperatureProto {
     @Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(temperatureResult_)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, temperatureResult_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(homeArea_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, homeArea_);
+      }
+      if (Double.doubleToRawLongBits(degreeCelsius_) != 0) {
+        output.writeDouble(2, degreeCelsius_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -684,8 +704,12 @@ public final class HelloTemperatureProto {
       if (size != -1) return size;
 
       size = 0;
-      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(temperatureResult_)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, temperatureResult_);
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(homeArea_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, homeArea_);
+      }
+      if (Double.doubleToRawLongBits(degreeCelsius_) != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(2, degreeCelsius_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -702,8 +726,11 @@ public final class HelloTemperatureProto {
       }
       TemperatureResponse other = (TemperatureResponse) obj;
 
-      if (!getTemperatureResult()
-          .equals(other.getTemperatureResult())) return false;
+      if (!getHomeArea()
+          .equals(other.getHomeArea())) return false;
+      if (Double.doubleToLongBits(getDegreeCelsius())
+          != Double.doubleToLongBits(
+              other.getDegreeCelsius())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -715,8 +742,11 @@ public final class HelloTemperatureProto {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + TEMPERATURERESULT_FIELD_NUMBER;
-      hash = (53 * hash) + getTemperatureResult().hashCode();
+      hash = (37 * hash) + HOMEAREA_FIELD_NUMBER;
+      hash = (53 * hash) + getHomeArea().hashCode();
+      hash = (37 * hash) + DEGREECELSIUS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          Double.doubleToLongBits(getDegreeCelsius()));
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -848,7 +878,8 @@ public final class HelloTemperatureProto {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        temperatureResult_ = "";
+        homeArea_ = "";
+        degreeCelsius_ = 0D;
         return this;
       }
 
@@ -883,7 +914,10 @@ public final class HelloTemperatureProto {
       private void buildPartial0(TemperatureResponse result) {
         int from_bitField0_ = bitField0_;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.temperatureResult_ = temperatureResult_;
+          result.homeArea_ = homeArea_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.degreeCelsius_ = degreeCelsius_;
         }
       }
 
@@ -931,10 +965,13 @@ public final class HelloTemperatureProto {
 
       public Builder mergeFrom(TemperatureResponse other) {
         if (other == TemperatureResponse.getDefaultInstance()) return this;
-        if (!other.getTemperatureResult().isEmpty()) {
-          temperatureResult_ = other.temperatureResult_;
+        if (!other.getHomeArea().isEmpty()) {
+          homeArea_ = other.homeArea_;
           bitField0_ |= 0x00000001;
           onChanged();
+        }
+        if (other.getDegreeCelsius() != 0D) {
+          setDegreeCelsius(other.getDegreeCelsius());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -963,10 +1000,15 @@ public final class HelloTemperatureProto {
                 done = true;
                 break;
               case 10: {
-                temperatureResult_ = input.readStringRequireUtf8();
+                homeArea_ = input.readStringRequireUtf8();
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
+              case 17: {
+                degreeCelsius_ = input.readDouble();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 17
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -984,74 +1026,106 @@ public final class HelloTemperatureProto {
       }
       private int bitField0_;
 
-      private Object temperatureResult_ = "";
+      private Object homeArea_ = "";
       /**
-       * <code>string temperatureResult = 1;</code>
-       * @return The temperatureResult.
+       * <code>string homeArea = 1;</code>
+       * @return The homeArea.
        */
-      public String getTemperatureResult() {
-        Object ref = temperatureResult_;
+      public String getHomeArea() {
+        Object ref = homeArea_;
         if (!(ref instanceof String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           String s = bs.toStringUtf8();
-          temperatureResult_ = s;
+          homeArea_ = s;
           return s;
         } else {
           return (String) ref;
         }
       }
       /**
-       * <code>string temperatureResult = 1;</code>
-       * @return The bytes for temperatureResult.
+       * <code>string homeArea = 1;</code>
+       * @return The bytes for homeArea.
        */
       public com.google.protobuf.ByteString
-          getTemperatureResultBytes() {
-        Object ref = temperatureResult_;
+          getHomeAreaBytes() {
+        Object ref = homeArea_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (String) ref);
-          temperatureResult_ = b;
+          homeArea_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string temperatureResult = 1;</code>
-       * @param value The temperatureResult to set.
+       * <code>string homeArea = 1;</code>
+       * @param value The homeArea to set.
        * @return This builder for chaining.
        */
-      public Builder setTemperatureResult(
+      public Builder setHomeArea(
           String value) {
         if (value == null) { throw new NullPointerException(); }
-        temperatureResult_ = value;
+        homeArea_ = value;
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>string temperatureResult = 1;</code>
+       * <code>string homeArea = 1;</code>
        * @return This builder for chaining.
        */
-      public Builder clearTemperatureResult() {
-        temperatureResult_ = getDefaultInstance().getTemperatureResult();
+      public Builder clearHomeArea() {
+        homeArea_ = getDefaultInstance().getHomeArea();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
       }
       /**
-       * <code>string temperatureResult = 1;</code>
-       * @param value The bytes for temperatureResult to set.
+       * <code>string homeArea = 1;</code>
+       * @param value The bytes for homeArea to set.
        * @return This builder for chaining.
        */
-      public Builder setTemperatureResultBytes(
+      public Builder setHomeAreaBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         checkByteStringIsUtf8(value);
-        temperatureResult_ = value;
+        homeArea_ = value;
         bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private double degreeCelsius_ ;
+      /**
+       * <code>double degreeCelsius = 2;</code>
+       * @return The degreeCelsius.
+       */
+      @Override
+      public double getDegreeCelsius() {
+        return degreeCelsius_;
+      }
+      /**
+       * <code>double degreeCelsius = 2;</code>
+       * @param value The degreeCelsius to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDegreeCelsius(double value) {
+
+        degreeCelsius_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double degreeCelsius = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDegreeCelsius() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        degreeCelsius_ = 0D;
         onChanged();
         return this;
       }
@@ -1138,13 +1212,13 @@ public final class HelloTemperatureProto {
       descriptor;
   static {
     String[] descriptorData = {
-      "\n\021Temperature.proto\"-\n\022TemperatureReques" +
-      "t\022\027\n\017temperatureCall\030\001 \001(\t\"0\n\023Temperatur" +
-      "eResponse\022\031\n\021temperatureResult\030\001 \001(\t2S\n\020" +
-      "HelloTemperature\022?\n\022temperatureService\022\023" +
-      ".TemperatureRequest\032\024.TemperatureRespons" +
-      "eB*\n\017com.temperatureB\025HelloTemperaturePr" +
-      "otoP\000b\006proto3"
+      "\n\021Temperature.proto\"&\n\022TemperatureReques" +
+      "t\022\020\n\010tempCall\030\001 \001(\t\">\n\023TemperatureRespon" +
+      "se\022\020\n\010homeArea\030\001 \001(\t\022\025\n\rdegreeCelsius\030\002 " +
+      "\001(\0012U\n\020HelloTemperature\022A\n\022temperatureSe" +
+      "rvice\022\023.TemperatureRequest\032\024.Temperature" +
+      "Response0\001B*\n\017com.temperatureB\025HelloTemp" +
+      "eratureProtoP\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1155,13 +1229,13 @@ public final class HelloTemperatureProto {
     internal_static_TemperatureRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TemperatureRequest_descriptor,
-        new String[] { "TemperatureCall", });
+        new String[] { "TempCall", });
     internal_static_TemperatureResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_TemperatureResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TemperatureResponse_descriptor,
-        new String[] { "TemperatureResult", });
+        new String[] { "HomeArea", "DegreeCelsius", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
