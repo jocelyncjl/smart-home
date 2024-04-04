@@ -22,7 +22,7 @@ public class TemperatureClient {
                 HelloTemperatureProto.TemperatureResponse tempResponse = tempResponseIterator.next();
                 String homeArea = tempResponse.getHomeArea();
                 double degreeCelsius = tempResponse.getDegreeCelsius();
-                System.out.println("The temperature in the" + homeArea + "is" + degreeCelsius + "°C");
+                System.out.println("The temperature in the " + homeArea + " is " + degreeCelsius + "°C");
             }
         }catch(Exception e){
             e.printStackTrace();
