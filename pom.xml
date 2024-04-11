@@ -12,7 +12,6 @@
         <module>grpc-api</module>
         <module>grpc-server</module>
         <module>grpc-client</module>
-        <module>grpc-api-temperature</module>
     </modules>
 
     <properties>

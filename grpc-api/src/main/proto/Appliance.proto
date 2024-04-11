@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_multiple_files = false;
+option java_package = "com.appliance";
+option java_outer_classname = "HelloApplianceProto";
+
+message ApplianceRequest{
+  string applianceName = 1;
+  string applianceOperation = 2;
+}
+
+message ApplianceResponse{
+  string operationResponse = 1;
+}
+
+service HelloAppliance{
+  rpc applianceService( stream ApplianceRequest) returns (ApplianceResponse);
+}
+
