@@ -1,0 +1,19 @@
+syntax = "proto3";
+option java_multiple_files = false;
+option java_package = "com.security";
+option java_outer_classname = "HelloSecurityProto";
+
+message SecurityRequest{
+  string onInstructs = 1;
+  string offInstructs = 2;
+}
+
+message SecurityResponse{
+  string warnings = 1;
+  string operations = 2;
+  string dangerRemove = 3;
+}
+
+service HelloSecurity{
+  rpc securityService(stream SecurityRequest)  returns ( stream SecurityResponse);
+}
