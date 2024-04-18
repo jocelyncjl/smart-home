@@ -12,6 +12,7 @@ message SecurityResponse{
   string warnings = 1;
   string operations = 2;
   string dangerRemove = 3;
+  string operationsTwo = 4;
 }
 
 service HelloSecurity{

@@ -9,7 +9,15 @@ public class SecurityServiceImpl extends HelloSecurityGrpc.HelloSecurityImplBase
             @Override
             public void onNext(HelloSecurityProto.SecurityRequest securityRequest) {
                 responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setWarnings("Detecting an unidentified person entering").build());
-                System.out.println("Accepted the instruction: " + securityRequest.getOnInstructs());
+                if(securityRequest.getOnInstructs().equals("Turn on the camera and alarm")){
+                    System.out.println(securityRequest.getOnInstructs());
+                    responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setOperations("Turn on the camera and alarm successfully").build());
+                    responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setDangerRemove("The unknown person has already left").build());
+                }else if(securityRequest.getOffInstructs().equals("Turn off the camera and alarm")){
+                    System.out.println(securityRequest.getOffInstructs());
+                    responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setOperations("Turn off the camera and alarm successfully").build());
+                    responseObserver.onCompleted();
+                }
             }
 
             @Override
@@ -22,9 +30,5 @@ public class SecurityServiceImpl extends HelloSecurityGrpc.HelloSecurityImplBase
                 responseObserver.onCompleted();
             }
         };
-
-
-
-
     }
 }

@@ -754,6 +754,18 @@ public final class HelloSecurityProto {
      */
     com.google.protobuf.ByteString
         getDangerRemoveBytes();
+
+    /**
+     * <code>string operationsTwo = 4;</code>
+     * @return The operationsTwo.
+     */
+    String getOperationsTwo();
+    /**
+     * <code>string operationsTwo = 4;</code>
+     * @return The bytes for operationsTwo.
+     */
+    com.google.protobuf.ByteString
+        getOperationsTwoBytes();
   }
   /**
    * Protobuf type {@code SecurityResponse}
@@ -771,6 +783,7 @@ public final class HelloSecurityProto {
       warnings_ = "";
       operations_ = "";
       dangerRemove_ = "";
+      operationsTwo_ = "";
     }
 
     @Override
@@ -910,6 +923,45 @@ public final class HelloSecurityProto {
       }
     }
 
+    public static final int OPERATIONSTWO_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private volatile Object operationsTwo_ = "";
+    /**
+     * <code>string operationsTwo = 4;</code>
+     * @return The operationsTwo.
+     */
+    @Override
+    public String getOperationsTwo() {
+      Object ref = operationsTwo_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        operationsTwo_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string operationsTwo = 4;</code>
+     * @return The bytes for operationsTwo.
+     */
+    @Override
+    public com.google.protobuf.ByteString
+        getOperationsTwoBytes() {
+      Object ref = operationsTwo_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        operationsTwo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @Override
     public final boolean isInitialized() {
@@ -933,6 +985,9 @@ public final class HelloSecurityProto {
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dangerRemove_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, dangerRemove_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(operationsTwo_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, operationsTwo_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -950,6 +1005,9 @@ public final class HelloSecurityProto {
       }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(dangerRemove_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, dangerRemove_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(operationsTwo_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, operationsTwo_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -972,6 +1030,8 @@ public final class HelloSecurityProto {
           .equals(other.getOperations())) return false;
       if (!getDangerRemove()
           .equals(other.getDangerRemove())) return false;
+      if (!getOperationsTwo()
+          .equals(other.getOperationsTwo())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -989,6 +1049,8 @@ public final class HelloSecurityProto {
       hash = (53 * hash) + getOperations().hashCode();
       hash = (37 * hash) + DANGERREMOVE_FIELD_NUMBER;
       hash = (53 * hash) + getDangerRemove().hashCode();
+      hash = (37 * hash) + OPERATIONSTWO_FIELD_NUMBER;
+      hash = (53 * hash) + getOperationsTwo().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1123,6 +1185,7 @@ public final class HelloSecurityProto {
         warnings_ = "";
         operations_ = "";
         dangerRemove_ = "";
+        operationsTwo_ = "";
         return this;
       }
 
@@ -1164,6 +1227,9 @@ public final class HelloSecurityProto {
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.dangerRemove_ = dangerRemove_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.operationsTwo_ = operationsTwo_;
         }
       }
 
@@ -1226,6 +1292,11 @@ public final class HelloSecurityProto {
           bitField0_ |= 0x00000004;
           onChanged();
         }
+        if (!other.getOperationsTwo().isEmpty()) {
+          operationsTwo_ = other.operationsTwo_;
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -1267,6 +1338,11 @@ public final class HelloSecurityProto {
                 bitField0_ |= 0x00000004;
                 break;
               } // case 26
+              case 34: {
+                operationsTwo_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -1499,6 +1575,78 @@ public final class HelloSecurityProto {
         onChanged();
         return this;
       }
+
+      private Object operationsTwo_ = "";
+      /**
+       * <code>string operationsTwo = 4;</code>
+       * @return The operationsTwo.
+       */
+      public String getOperationsTwo() {
+        Object ref = operationsTwo_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          operationsTwo_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>string operationsTwo = 4;</code>
+       * @return The bytes for operationsTwo.
+       */
+      public com.google.protobuf.ByteString
+          getOperationsTwoBytes() {
+        Object ref = operationsTwo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          operationsTwo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string operationsTwo = 4;</code>
+       * @param value The operationsTwo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOperationsTwo(
+          String value) {
+        if (value == null) { throw new NullPointerException(); }
+        operationsTwo_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string operationsTwo = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOperationsTwo() {
+        operationsTwo_ = getDefaultInstance().getOperationsTwo();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string operationsTwo = 4;</code>
+       * @param value The bytes for operationsTwo to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOperationsTwoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        operationsTwo_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
       @Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1583,13 +1731,13 @@ public final class HelloSecurityProto {
   static {
     String[] descriptorData = {
       "\n\016Security.proto\"<\n\017SecurityRequest\022\023\n\013o" +
-      "nInstructs\030\001 \001(\t\022\024\n\014offInstructs\030\002 \001(\t\"N" +
+      "nInstructs\030\001 \001(\t\022\024\n\014offInstructs\030\002 \001(\t\"e" +
       "\n\020SecurityResponse\022\020\n\010warnings\030\001 \001(\t\022\022\n\n" +
-      "operations\030\002 \001(\t\022\024\n\014dangerRemove\030\003 \001(\t2K" +
-      "\n\rHelloSecurity\022:\n\017securityService\022\020.Sec" +
-      "urityRequest\032\021.SecurityResponse(\0010\001B$\n\014c" +
-      "om.securityB\022HelloSecurityProtoP\000b\006proto" +
-      "3"
+      "operations\030\002 \001(\t\022\024\n\014dangerRemove\030\003 \001(\t\022\025" +
+      "\n\roperationsTwo\030\004 \001(\t2K\n\rHelloSecurity\022:" +
+      "\n\017securityService\022\020.SecurityRequest\032\021.Se" +
+      "curityResponse(\0010\001B$\n\014com.securityB\022Hell" +
+      "oSecurityProtoP\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1606,7 +1754,7 @@ public final class HelloSecurityProto {
     internal_static_SecurityResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_SecurityResponse_descriptor,
-        new String[] { "Warnings", "Operations", "DangerRemove", });
+        new String[] { "Warnings", "Operations", "DangerRemove", "OperationsTwo", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
