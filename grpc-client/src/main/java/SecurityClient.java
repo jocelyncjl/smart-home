@@ -16,36 +16,21 @@ public class SecurityClient {
             securityRequestStreamObserver = securityStub.securityService(new StreamObserver<HelloSecurityProto.SecurityResponse>() {
                 @Override
                 public void onNext(HelloSecurityProto.SecurityResponse securityResponse){
-                    if(!securityResponse.getWarnings().isEmpty()){
+                    if (!securityResponse.getWarnings().isEmpty()) {
                         System.out.println(securityResponse.getWarnings());
-                        System.out.println(securityResponse.getOperations());
                         securityRequestStreamObserver.onNext(HelloSecurityProto.SecurityRequest.newBuilder().setOnInstructs("Turn on the camera and alarm").build());
                     }
-                    if(!securityResponse.getDangerRemove().isEmpty()){
+                    if (!securityResponse.getOperations().isEmpty()) {
+                        System.out.println(securityResponse.getOperations());
+                    }
+                    if (!securityResponse.getDangerRemove().isEmpty()) {
                         System.out.println(securityResponse.getDangerRemove());
                         securityRequestStreamObserver.onNext(HelloSecurityProto.SecurityRequest.newBuilder().setOffInstructs("Turn off the camera and alarm").build());
                     }
-                    if(!securityResponse.getOperationsTwo().isEmpty()){
+                    if (!securityResponse.getOperationsTwo().isEmpty()) {
                         System.out.println(securityResponse.getOperationsTwo());
                         securityRequestStreamObserver.onCompleted();
-
                     }
-
-
-
-//                    if(securityResponse.getWarnings().equals("Detecting an unidentified person entering")){
-//                        System.out.println(securityResponse.getWarnings());
-//
-//                    }else if(securityResponse.getOperations().equals("Turn on the camera and alarm successfully")){
-//                        System.out.println(securityResponse.getOperations());
-//                        securityRequestStreamObserver.onNext(HelloSecurityProto.SecurityRequest.newBuilder().setOffInstructs("Turn off the camera and alarm").build());
-//
-//                    }else if(securityResponse.getDangerRemove().equals("The unknown person has already left")) {
-//                        System.out.println(securityResponse.getDangerRemove());
-//                        System.out.println(securityResponse.getOperationsTwo());
-//                        securityRequestStreamObserver.onCompleted();
-//
-//                    }
                 }
                 @Override
                 public void onError(Throwable throwable) {
@@ -54,12 +39,9 @@ public class SecurityClient {
 
                 @Override
                 public void onCompleted() {
-                    securityRequestStreamObserver.onCompleted();
+
                 }
             });
-
-            securityRequestStreamObserver.onNext(HelloSecurityProto.SecurityRequest.newBuilder().setOnInstructs("Turn on the camera and alarm").build());
-//            securityRequestStreamObserver.onCompleted();
             managedChannel.awaitTermination(12, TimeUnit.SECONDS);
 
         }catch(Exception e){
