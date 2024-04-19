@@ -12,10 +12,11 @@ public class SecurityServiceImpl extends HelloSecurityGrpc.HelloSecurityImplBase
                 if(securityRequest.getOnInstructs().equals("Turn on the camera and alarm")){
                     System.out.println(securityRequest.getOnInstructs());
                     responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setOperations("Turn on the camera and alarm successfully").build());
-                    responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setDangerRemove("The unknown person has already left").build());
-                }else if(securityRequest.getOffInstructs().equals("Turn off the camera and alarm")){
+                }
+                if(securityRequest.getOffInstructs().equals("Turn off the camera and alarm")){
                     System.out.println(securityRequest.getOffInstructs());
-                    responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setOperations("Turn off the camera and alarm successfully").build());
+                    responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setDangerRemove("The unknown person has already left").build());
+                    responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setOperationsTwo("Turn off the camera and alarm successfully").build());
                     responseObserver.onCompleted();
                 }
             }

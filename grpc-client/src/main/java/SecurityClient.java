@@ -15,22 +15,24 @@ public class SecurityClient {
             HelloSecurityGrpc.HelloSecurityStub securityStub = HelloSecurityGrpc.newStub(managedChannel);
             securityRequestStreamObserver = securityStub.securityService(new StreamObserver<HelloSecurityProto.SecurityResponse>() {
                 @Override
-                public void onNext(HelloSecurityProto.SecurityResponse securityResponse) {
+                public void onNext(HelloSecurityProto.SecurityResponse securityResponse){
                     if(securityResponse.getWarnings().equals("Detecting an unidentified person entering")){
-                        System.out.println("Received the message: " + securityResponse.getWarnings());
+                        System.out.println(securityResponse.getWarnings());
                         securityRequestStreamObserver.onNext(HelloSecurityProto.SecurityRequest.newBuilder().setOnInstructs("Turn on the camera and alarm").build());
-
                     }else if(securityResponse.getOperations().equals("Turn on the camera and alarm successfully")){
-                        System.out.println("Received the message: " + securityResponse.getOperations());
-                    }else if(securityResponse.getDangerRemove().equals("The unknown person has already left")){
-                        System.out.println("Received the message: " + securityResponse.getDangerRemove());
+                        System.out.println(securityResponse.getOperations());
                         securityRequestStreamObserver.onNext(HelloSecurityProto.SecurityRequest.newBuilder().setOffInstructs("Turn off the camera and alarm").build());
-                    }else if(securityResponse.getOperationsTwo().equals("Turn off the camera and alarm successfully")){
-                        System.out.println("Received message from server: " + securityResponse.getOperationsTwo());
-                        securityRequestStreamObserver.onCompleted();
-                    }
-                }
 
+                    }else if(securityResponse.getDangerRemove().equals("The unknown person has already left")) {
+                        System.out.println(securityResponse.getDangerRemove());
+                        System.out.println(securityResponse.getOperationsTwo());
+                        securityRequestStreamObserver.onCompleted();
+
+                    }
+
+
+
+                }
                 @Override
                 public void onError(Throwable throwable) {
 
@@ -38,7 +40,7 @@ public class SecurityClient {
 
                 @Override
                 public void onCompleted() {
-
+                    securityRequestStreamObserver.onCompleted();
                 }
             });
 
