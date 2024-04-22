@@ -15,35 +15,66 @@ public final class HelloLightGrpc {
   public static final String SERVICE_NAME = "HelloLight";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.light.HelloLightProto.LightRequest,
-      com.light.HelloLightProto.LightResponse> getLightServiceMethod;
+  private static volatile io.grpc.MethodDescriptor<HelloLightProto.LightRequest,
+      HelloLightProto.LightResponse> getLightServiceMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "lightService",
-      requestType = com.light.HelloLightProto.LightRequest.class,
-      responseType = com.light.HelloLightProto.LightResponse.class,
+      requestType = HelloLightProto.LightRequest.class,
+      responseType = HelloLightProto.LightResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.light.HelloLightProto.LightRequest,
-      com.light.HelloLightProto.LightResponse> getLightServiceMethod() {
-    io.grpc.MethodDescriptor<com.light.HelloLightProto.LightRequest, com.light.HelloLightProto.LightResponse> getLightServiceMethod;
+  public static io.grpc.MethodDescriptor<HelloLightProto.LightRequest,
+      HelloLightProto.LightResponse> getLightServiceMethod() {
+    io.grpc.MethodDescriptor<HelloLightProto.LightRequest, HelloLightProto.LightResponse> getLightServiceMethod;
     if ((getLightServiceMethod = HelloLightGrpc.getLightServiceMethod) == null) {
       synchronized (HelloLightGrpc.class) {
         if ((getLightServiceMethod = HelloLightGrpc.getLightServiceMethod) == null) {
           HelloLightGrpc.getLightServiceMethod = getLightServiceMethod =
-              io.grpc.MethodDescriptor.<com.light.HelloLightProto.LightRequest, com.light.HelloLightProto.LightResponse>newBuilder()
+              io.grpc.MethodDescriptor.<HelloLightProto.LightRequest, HelloLightProto.LightResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "lightService"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.light.HelloLightProto.LightRequest.getDefaultInstance()))
+                  HelloLightProto.LightRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.light.HelloLightProto.LightResponse.getDefaultInstance()))
+                  HelloLightProto.LightResponse.getDefaultInstance()))
               .setSchemaDescriptor(new HelloLightMethodDescriptorSupplier("lightService"))
               .build();
         }
       }
     }
     return getLightServiceMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<HelloLightProto.HealthCheckRequest,
+      HelloLightProto.HealthCheckResponse> getHealthCheckMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "HealthCheck",
+      requestType = HelloLightProto.HealthCheckRequest.class,
+      responseType = HelloLightProto.HealthCheckResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<HelloLightProto.HealthCheckRequest,
+      HelloLightProto.HealthCheckResponse> getHealthCheckMethod() {
+    io.grpc.MethodDescriptor<HelloLightProto.HealthCheckRequest, HelloLightProto.HealthCheckResponse> getHealthCheckMethod;
+    if ((getHealthCheckMethod = HelloLightGrpc.getHealthCheckMethod) == null) {
+      synchronized (HelloLightGrpc.class) {
+        if ((getHealthCheckMethod = HelloLightGrpc.getHealthCheckMethod) == null) {
+          HelloLightGrpc.getHealthCheckMethod = getHealthCheckMethod =
+              io.grpc.MethodDescriptor.<HelloLightProto.HealthCheckRequest, HelloLightProto.HealthCheckResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "HealthCheck"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  HelloLightProto.HealthCheckRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  HelloLightProto.HealthCheckResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new HelloLightMethodDescriptorSupplier("HealthCheck"))
+              .build();
+        }
+      }
+    }
+    return getHealthCheckMethod;
   }
 
   /**
@@ -96,9 +127,16 @@ public final class HelloLightGrpc {
 
     /**
      */
-    default void lightService(com.light.HelloLightProto.LightRequest request,
-        io.grpc.stub.StreamObserver<com.light.HelloLightProto.LightResponse> responseObserver) {
+    default void lightService(HelloLightProto.LightRequest request,
+                              io.grpc.stub.StreamObserver<HelloLightProto.LightResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLightServiceMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void healthCheck(HelloLightProto.HealthCheckRequest request,
+                             io.grpc.stub.StreamObserver<HelloLightProto.HealthCheckResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHealthCheckMethod(), responseObserver);
     }
   }
 
@@ -131,10 +169,18 @@ public final class HelloLightGrpc {
 
     /**
      */
-    public void lightService(com.light.HelloLightProto.LightRequest request,
-        io.grpc.stub.StreamObserver<com.light.HelloLightProto.LightResponse> responseObserver) {
+    public void lightService(HelloLightProto.LightRequest request,
+                             io.grpc.stub.StreamObserver<HelloLightProto.LightResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getLightServiceMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void healthCheck(HelloLightProto.HealthCheckRequest request,
+                            io.grpc.stub.StreamObserver<HelloLightProto.HealthCheckResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getHealthCheckMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -156,9 +202,17 @@ public final class HelloLightGrpc {
 
     /**
      */
-    public com.light.HelloLightProto.LightResponse lightService(com.light.HelloLightProto.LightRequest request) {
+    public HelloLightProto.LightResponse lightService(HelloLightProto.LightRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getLightServiceMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<HelloLightProto.HealthCheckResponse> healthCheck(
+        HelloLightProto.HealthCheckRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getHealthCheckMethod(), getCallOptions(), request);
     }
   }
 
@@ -180,14 +234,15 @@ public final class HelloLightGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.light.HelloLightProto.LightResponse> lightService(
-        com.light.HelloLightProto.LightRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<HelloLightProto.LightResponse> lightService(
+        HelloLightProto.LightRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getLightServiceMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_LIGHT_SERVICE = 0;
+  private static final int METHODID_HEALTH_CHECK = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -207,8 +262,12 @@ public final class HelloLightGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_LIGHT_SERVICE:
-          serviceImpl.lightService((com.light.HelloLightProto.LightRequest) request,
-              (io.grpc.stub.StreamObserver<com.light.HelloLightProto.LightResponse>) responseObserver);
+          serviceImpl.lightService((HelloLightProto.LightRequest) request,
+              (io.grpc.stub.StreamObserver<HelloLightProto.LightResponse>) responseObserver);
+          break;
+        case METHODID_HEALTH_CHECK:
+          serviceImpl.healthCheck((HelloLightProto.HealthCheckRequest) request,
+              (io.grpc.stub.StreamObserver<HelloLightProto.HealthCheckResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -232,9 +291,16 @@ public final class HelloLightGrpc {
           getLightServiceMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.light.HelloLightProto.LightRequest,
-              com.light.HelloLightProto.LightResponse>(
+              HelloLightProto.LightRequest,
+              HelloLightProto.LightResponse>(
                 service, METHODID_LIGHT_SERVICE)))
+        .addMethod(
+          getHealthCheckMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              HelloLightProto.HealthCheckRequest,
+              HelloLightProto.HealthCheckResponse>(
+                service, METHODID_HEALTH_CHECK)))
         .build();
   }
 
@@ -244,7 +310,7 @@ public final class HelloLightGrpc {
 
     @Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.light.HelloLightProto.getDescriptor();
+      return HelloLightProto.getDescriptor();
     }
 
     @Override
@@ -284,6 +350,7 @@ public final class HelloLightGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new HelloLightFileDescriptorSupplier())
               .addMethod(getLightServiceMethod())
+              .addMethod(getHealthCheckMethod())
               .build();
         }
       }

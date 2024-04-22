@@ -11,8 +11,20 @@ message LightResponse{
   string lightResult = 1;
 }
 
+message HealthCheckRequest {
+  string serviceName = 1;
+  string serviceVersion = 2;
+  int64 timestamp = 3;
+}
+
+message HealthCheckResponse {
+  int32 status = 1;
+  string message = 2;
+}
+
 service HelloLight{
   rpc lightService(LightRequest) returns (LightResponse);
+  rpc HealthCheck(HealthCheckRequest) returns (stream HealthCheckResponse);
 }
 
 

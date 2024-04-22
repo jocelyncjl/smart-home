@@ -22,4 +22,11 @@ public class LightServiceImpl extends HelloLightGrpc.HelloLightImplBase{
         responseObserver.onCompleted();
 
     }
+
+    @Override
+    public void healthCheck(HelloLightProto.HealthCheckRequest request, StreamObserver<HelloLightProto.HealthCheckResponse> responseObserver) {
+        HelloLightProto.HealthCheckResponse response = HelloLightProto.HealthCheckResponse.newBuilder().setStatus(200).build();
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+    }
 }
