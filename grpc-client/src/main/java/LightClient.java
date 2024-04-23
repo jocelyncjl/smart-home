@@ -4,15 +4,15 @@ import com.light.HelloLightGrpc;
 import com.light.HelloLightProto;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-
 import java.util.List;
+
 
 public class LightClient {
     private ConsulClient consulClient;
     private String consuleServiceName;
 
     // Constructor method
-    public void LightClient(String consulHost,int consulPort,String consuleServiceName){
+    public LightClient(String consulHost,int consulPort,String consuleServiceName){
         this.consulClient = new ConsulClient(consulHost,consulPort);
         this.consuleServiceName = consuleServiceName;
     }
@@ -41,58 +41,36 @@ public class LightClient {
         int serverPort = healthService.getService().getPort();
 
         // Debug output for extracted host and port
-        System.out.println("Server host" + serverHost);
-        System.out.println("Server port" + serverPort);
+        System.out.println("Server host: " + serverHost);
+        System.out.println("Server port: " + serverPort);
 
         // Create a gRPC channel to connect to the server
         ManagedChannel channel = ManagedChannelBuilder.forAddress(serverHost,serverPort).usePlaintext().build();
 
         // Create a stub for the gRPC service
-        HelloLightGrpc.HelloLightBlockingStub stub = HelloLightGrpc.newBlockingStub(channel);
+        HelloLightGrpc.HelloLightBlockingStub lightStub = HelloLightGrpc.newBlockingStub(channel);
 
-        //
+        // Prepare and send the unary request
+        HelloLightProto.LightRequest lightRequest = HelloLightProto.LightRequest.newBuilder().setLightcall("Please help me increase the light brightness of the table lamp").build();
+        HelloLightProto.LightResponse lightResponse = lightStub.lightService(lightRequest);
 
+        // Process the response
+        String lightResult = lightResponse.getLightResult();
+        System.out.println(lightResult);
 
-
-
-
-
-
-
-
+        // Shutdown the channel when done
+        channel.shutdown();
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static void main(String[] args) {
-        // Create the communication channel between Client and Server
-        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress("localhost", 8080).usePlaintext().build();
-        try {
-            // Obtain the agency stub
-            HelloLightGrpc.HelloLightBlockingStub lightStub = HelloLightGrpc.newBlockingStub(managedChannel);
-            // Prepare and encapsulate the call message
-            HelloLightProto.LightRequest.Builder builder = HelloLightProto.LightRequest.newBuilder();
-            builder.setLightcall("Please help me increase the light brightness of the table lamp");
-            HelloLightProto.LightRequest lightRequest = builder.build();
-            // invoke the lightService method to implement communication
-            HelloLightProto.LightResponse lightResponse = lightStub.lightService(lightRequest);
-            String lightResult = lightResponse.getLightResult();
-            System.out.println(lightResult);
-        }catch(Exception e){
-            e.printStackTrace();
-        }finally{
-            managedChannel.shutdown();
-        }
+        // Consul host
+        String consulHost = "localhost";
+        // Consul port
+        int consulPort = 8500;
+        // Name of the service registered in Consul
+        String consulServiceName = "light-service";
+
+        LightClient lightClient = new LightClient(consulHost,consulPort,consulServiceName);
+        lightClient.makeLightRequest();
     }
 }
