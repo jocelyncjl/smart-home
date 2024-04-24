@@ -46,6 +46,37 @@ public final class HelloTemperatureGrpc {
     return getTemperatureServiceMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<HelloTemperatureProto.TempHealthCheckRequest,
+      HelloTemperatureProto.TempHealthCheckResponse> getHealthCheckMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "HealthCheck",
+      requestType = HelloTemperatureProto.TempHealthCheckRequest.class,
+      responseType = HelloTemperatureProto.TempHealthCheckResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<HelloTemperatureProto.TempHealthCheckRequest,
+      HelloTemperatureProto.TempHealthCheckResponse> getHealthCheckMethod() {
+    io.grpc.MethodDescriptor<HelloTemperatureProto.TempHealthCheckRequest, HelloTemperatureProto.TempHealthCheckResponse> getHealthCheckMethod;
+    if ((getHealthCheckMethod = HelloTemperatureGrpc.getHealthCheckMethod) == null) {
+      synchronized (HelloTemperatureGrpc.class) {
+        if ((getHealthCheckMethod = HelloTemperatureGrpc.getHealthCheckMethod) == null) {
+          HelloTemperatureGrpc.getHealthCheckMethod = getHealthCheckMethod =
+              io.grpc.MethodDescriptor.<HelloTemperatureProto.TempHealthCheckRequest, HelloTemperatureProto.TempHealthCheckResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "HealthCheck"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  HelloTemperatureProto.TempHealthCheckRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  HelloTemperatureProto.TempHealthCheckResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new HelloTemperatureMethodDescriptorSupplier("HealthCheck"))
+              .build();
+        }
+      }
+    }
+    return getHealthCheckMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -100,6 +131,16 @@ public final class HelloTemperatureGrpc {
                                     io.grpc.stub.StreamObserver<HelloTemperatureProto.TemperatureResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTemperatureServiceMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Server-side streaming RPC for health check
+     * </pre>
+     */
+    default void healthCheck(HelloTemperatureProto.TempHealthCheckRequest request,
+                             io.grpc.stub.StreamObserver<HelloTemperatureProto.TempHealthCheckResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHealthCheckMethod(), responseObserver);
+    }
   }
 
   /**
@@ -136,6 +177,17 @@ public final class HelloTemperatureGrpc {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getTemperatureServiceMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Server-side streaming RPC for health check
+     * </pre>
+     */
+    public void healthCheck(HelloTemperatureProto.TempHealthCheckRequest request,
+                            io.grpc.stub.StreamObserver<HelloTemperatureProto.TempHealthCheckResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getHealthCheckMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -161,6 +213,17 @@ public final class HelloTemperatureGrpc {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getTemperatureServiceMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * Server-side streaming RPC for health check
+     * </pre>
+     */
+    public java.util.Iterator<HelloTemperatureProto.TempHealthCheckResponse> healthCheck(
+        HelloTemperatureProto.TempHealthCheckRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getHealthCheckMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -181,6 +244,7 @@ public final class HelloTemperatureGrpc {
   }
 
   private static final int METHODID_TEMPERATURE_SERVICE = 0;
+  private static final int METHODID_HEALTH_CHECK = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -202,6 +266,10 @@ public final class HelloTemperatureGrpc {
         case METHODID_TEMPERATURE_SERVICE:
           serviceImpl.temperatureService((HelloTemperatureProto.TemperatureRequest) request,
               (io.grpc.stub.StreamObserver<HelloTemperatureProto.TemperatureResponse>) responseObserver);
+          break;
+        case METHODID_HEALTH_CHECK:
+          serviceImpl.healthCheck((HelloTemperatureProto.TempHealthCheckRequest) request,
+              (io.grpc.stub.StreamObserver<HelloTemperatureProto.TempHealthCheckResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -228,6 +296,13 @@ public final class HelloTemperatureGrpc {
               HelloTemperatureProto.TemperatureRequest,
               HelloTemperatureProto.TemperatureResponse>(
                 service, METHODID_TEMPERATURE_SERVICE)))
+        .addMethod(
+          getHealthCheckMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              HelloTemperatureProto.TempHealthCheckRequest,
+              HelloTemperatureProto.TempHealthCheckResponse>(
+                service, METHODID_HEALTH_CHECK)))
         .build();
   }
 
@@ -277,6 +352,7 @@ public final class HelloTemperatureGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new HelloTemperatureFileDescriptorSupplier())
               .addMethod(getTemperatureServiceMethod())
+              .addMethod(getHealthCheckMethod())
               .build();
         }
       }

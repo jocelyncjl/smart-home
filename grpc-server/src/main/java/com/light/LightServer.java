@@ -15,6 +15,7 @@ import java.util.Properties;
 public class LightServer {
     // Create the grpc server variable to store the server object
     private Server server;
+
     // The method to start the grpc light server
     private void start() throws IOException {
         // The port on which the server should run
@@ -32,18 +33,21 @@ public class LightServer {
             System.err.println("server shut down");
         }));
     }
+
     // The method to stop grpc server
     private void stop(){
         if(server!= null){
             server.shutdown();
         }
     }
+
     // Block and wait the server to close
     private void blockUntilShutDown() throws InterruptedException{
         if(server != null){
             server.awaitTermination();
         }
     }
+
     // The method to register the server to consul
     private void registerToConsul(){
         System.out.println("Registering to Consul...");
@@ -66,7 +70,6 @@ public class LightServer {
         int servicePort = Integer.parseInt(props.getProperty("consul.service.port"));
         // Health check interval
         String healthCheckInterval = props.getProperty("consul.service.healthCheckInterval");
-
         // Gain host address
         String hostAddress = null;
         try {

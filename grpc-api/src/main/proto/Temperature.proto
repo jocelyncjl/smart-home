@@ -12,6 +12,19 @@ message TemperatureResponse{
   double degreeCelsius = 2;
 }
 
+message TempHealthCheckRequest {
+  string serviceName = 1;
+  string serviceVersion = 2;
+  int64 timestamp = 3;
+}
+
+message TempHealthCheckResponse {
+  int32 status = 1;
+  string message = 2;
+}
+
 service HelloTemperature{
   rpc temperatureService(TemperatureRequest)  returns ( stream TemperatureResponse);
+  // Server-side streaming RPC for health check
+  rpc HealthCheck(TempHealthCheckRequest) returns (stream TempHealthCheckResponse);
 }
