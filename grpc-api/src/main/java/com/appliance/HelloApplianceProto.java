@@ -1267,6 +1267,1403 @@ public final class HelloApplianceProto {
 
   }
 
+  public interface AppHealthCheckRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:AppHealthCheckRequest)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string serviceName = 1;</code>
+     * @return The serviceName.
+     */
+    String getServiceName();
+    /**
+     * <code>string serviceName = 1;</code>
+     * @return The bytes for serviceName.
+     */
+    com.google.protobuf.ByteString
+        getServiceNameBytes();
+
+    /**
+     * <code>string serviceVersion = 2;</code>
+     * @return The serviceVersion.
+     */
+    String getServiceVersion();
+    /**
+     * <code>string serviceVersion = 2;</code>
+     * @return The bytes for serviceVersion.
+     */
+    com.google.protobuf.ByteString
+        getServiceVersionBytes();
+
+    /**
+     * <code>int64 timestamp = 3;</code>
+     * @return The timestamp.
+     */
+    long getTimestamp();
+  }
+  /**
+   * Protobuf type {@code AppHealthCheckRequest}
+   */
+  public static final class AppHealthCheckRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:AppHealthCheckRequest)
+      AppHealthCheckRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AppHealthCheckRequest.newBuilder() to construct.
+    private AppHealthCheckRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AppHealthCheckRequest() {
+      serviceName_ = "";
+      serviceVersion_ = "";
+    }
+
+    @Override
+    @SuppressWarnings({"unused"})
+    protected Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AppHealthCheckRequest();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return HelloApplianceProto.internal_static_AppHealthCheckRequest_descriptor;
+    }
+
+    @Override
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return HelloApplianceProto.internal_static_AppHealthCheckRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              AppHealthCheckRequest.class, Builder.class);
+    }
+
+    public static final int SERVICENAME_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile Object serviceName_ = "";
+    /**
+     * <code>string serviceName = 1;</code>
+     * @return The serviceName.
+     */
+    @Override
+    public String getServiceName() {
+      Object ref = serviceName_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        serviceName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string serviceName = 1;</code>
+     * @return The bytes for serviceName.
+     */
+    @Override
+    public com.google.protobuf.ByteString
+        getServiceNameBytes() {
+      Object ref = serviceName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        serviceName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SERVICEVERSION_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile Object serviceVersion_ = "";
+    /**
+     * <code>string serviceVersion = 2;</code>
+     * @return The serviceVersion.
+     */
+    @Override
+    public String getServiceVersion() {
+      Object ref = serviceVersion_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        serviceVersion_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string serviceVersion = 2;</code>
+     * @return The bytes for serviceVersion.
+     */
+    @Override
+    public com.google.protobuf.ByteString
+        getServiceVersionBytes() {
+      Object ref = serviceVersion_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        serviceVersion_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIMESTAMP_FIELD_NUMBER = 3;
+    private long timestamp_ = 0L;
+    /**
+     * <code>int64 timestamp = 3;</code>
+     * @return The timestamp.
+     */
+    @Override
+    public long getTimestamp() {
+      return timestamp_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serviceName_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, serviceName_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serviceVersion_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, serviceVersion_);
+      }
+      if (timestamp_ != 0L) {
+        output.writeInt64(3, timestamp_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serviceName_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, serviceName_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(serviceVersion_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, serviceVersion_);
+      }
+      if (timestamp_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, timestamp_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof AppHealthCheckRequest)) {
+        return super.equals(obj);
+      }
+      AppHealthCheckRequest other = (AppHealthCheckRequest) obj;
+
+      if (!getServiceName()
+          .equals(other.getServiceName())) return false;
+      if (!getServiceVersion()
+          .equals(other.getServiceVersion())) return false;
+      if (getTimestamp()
+          != other.getTimestamp()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SERVICENAME_FIELD_NUMBER;
+      hash = (53 * hash) + getServiceName().hashCode();
+      hash = (37 * hash) + SERVICEVERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getServiceVersion().hashCode();
+      hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getTimestamp());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static AppHealthCheckRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static AppHealthCheckRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static AppHealthCheckRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static AppHealthCheckRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static AppHealthCheckRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static AppHealthCheckRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static AppHealthCheckRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static AppHealthCheckRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static AppHealthCheckRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static AppHealthCheckRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static AppHealthCheckRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static AppHealthCheckRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(AppHealthCheckRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code AppHealthCheckRequest}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:AppHealthCheckRequest)
+        AppHealthCheckRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return HelloApplianceProto.internal_static_AppHealthCheckRequest_descriptor;
+      }
+
+      @Override
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return HelloApplianceProto.internal_static_AppHealthCheckRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                AppHealthCheckRequest.class, Builder.class);
+      }
+
+      // Construct using com.appliance.HelloApplianceProto.AppHealthCheckRequest.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+
+      }
+      @Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        serviceName_ = "";
+        serviceVersion_ = "";
+        timestamp_ = 0L;
+        return this;
+      }
+
+      @Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return HelloApplianceProto.internal_static_AppHealthCheckRequest_descriptor;
+      }
+
+      @Override
+      public AppHealthCheckRequest getDefaultInstanceForType() {
+        return AppHealthCheckRequest.getDefaultInstance();
+      }
+
+      @Override
+      public AppHealthCheckRequest build() {
+        AppHealthCheckRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @Override
+      public AppHealthCheckRequest buildPartial() {
+        AppHealthCheckRequest result = new AppHealthCheckRequest(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(AppHealthCheckRequest result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.serviceName_ = serviceName_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.serviceVersion_ = serviceVersion_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.timestamp_ = timestamp_;
+        }
+      }
+
+      @Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return super.setField(field, value);
+      }
+      @Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof AppHealthCheckRequest) {
+          return mergeFrom((AppHealthCheckRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(AppHealthCheckRequest other) {
+        if (other == AppHealthCheckRequest.getDefaultInstance()) return this;
+        if (!other.getServiceName().isEmpty()) {
+          serviceName_ = other.serviceName_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getServiceVersion().isEmpty()) {
+          serviceVersion_ = other.serviceVersion_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (other.getTimestamp() != 0L) {
+          setTimestamp(other.getTimestamp());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                serviceName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                serviceVersion_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                timestamp_ = input.readInt64();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private Object serviceName_ = "";
+      /**
+       * <code>string serviceName = 1;</code>
+       * @return The serviceName.
+       */
+      public String getServiceName() {
+        Object ref = serviceName_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          serviceName_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>string serviceName = 1;</code>
+       * @return The bytes for serviceName.
+       */
+      public com.google.protobuf.ByteString
+          getServiceNameBytes() {
+        Object ref = serviceName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          serviceName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string serviceName = 1;</code>
+       * @param value The serviceName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setServiceName(
+          String value) {
+        if (value == null) { throw new NullPointerException(); }
+        serviceName_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string serviceName = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearServiceName() {
+        serviceName_ = getDefaultInstance().getServiceName();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string serviceName = 1;</code>
+       * @param value The bytes for serviceName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setServiceNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        serviceName_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private Object serviceVersion_ = "";
+      /**
+       * <code>string serviceVersion = 2;</code>
+       * @return The serviceVersion.
+       */
+      public String getServiceVersion() {
+        Object ref = serviceVersion_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          serviceVersion_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>string serviceVersion = 2;</code>
+       * @return The bytes for serviceVersion.
+       */
+      public com.google.protobuf.ByteString
+          getServiceVersionBytes() {
+        Object ref = serviceVersion_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          serviceVersion_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string serviceVersion = 2;</code>
+       * @param value The serviceVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setServiceVersion(
+          String value) {
+        if (value == null) { throw new NullPointerException(); }
+        serviceVersion_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string serviceVersion = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearServiceVersion() {
+        serviceVersion_ = getDefaultInstance().getServiceVersion();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string serviceVersion = 2;</code>
+       * @param value The bytes for serviceVersion to set.
+       * @return This builder for chaining.
+       */
+      public Builder setServiceVersionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        serviceVersion_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private long timestamp_ ;
+      /**
+       * <code>int64 timestamp = 3;</code>
+       * @return The timestamp.
+       */
+      @Override
+      public long getTimestamp() {
+        return timestamp_;
+      }
+      /**
+       * <code>int64 timestamp = 3;</code>
+       * @param value The timestamp to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimestamp(long value) {
+
+        timestamp_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 timestamp = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimestamp() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        timestamp_ = 0L;
+        onChanged();
+        return this;
+      }
+      @Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:AppHealthCheckRequest)
+    }
+
+    // @@protoc_insertion_point(class_scope:AppHealthCheckRequest)
+    private static final AppHealthCheckRequest DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new AppHealthCheckRequest();
+    }
+
+    public static AppHealthCheckRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AppHealthCheckRequest>
+        PARSER = new com.google.protobuf.AbstractParser<AppHealthCheckRequest>() {
+      @Override
+      public AppHealthCheckRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<AppHealthCheckRequest> parser() {
+      return PARSER;
+    }
+
+    @Override
+    public com.google.protobuf.Parser<AppHealthCheckRequest> getParserForType() {
+      return PARSER;
+    }
+
+    @Override
+    public AppHealthCheckRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AppHealthCheckResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:AppHealthCheckResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 status = 1;</code>
+     * @return The status.
+     */
+    int getStatus();
+
+    /**
+     * <code>string message = 2;</code>
+     * @return The message.
+     */
+    String getMessage();
+    /**
+     * <code>string message = 2;</code>
+     * @return The bytes for message.
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
+  }
+  /**
+   * Protobuf type {@code AppHealthCheckResponse}
+   */
+  public static final class AppHealthCheckResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:AppHealthCheckResponse)
+      AppHealthCheckResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use AppHealthCheckResponse.newBuilder() to construct.
+    private AppHealthCheckResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private AppHealthCheckResponse() {
+      message_ = "";
+    }
+
+    @Override
+    @SuppressWarnings({"unused"})
+    protected Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new AppHealthCheckResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return HelloApplianceProto.internal_static_AppHealthCheckResponse_descriptor;
+    }
+
+    @Override
+    protected FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return HelloApplianceProto.internal_static_AppHealthCheckResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              AppHealthCheckResponse.class, Builder.class);
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private int status_ = 0;
+    /**
+     * <code>int32 status = 1;</code>
+     * @return The status.
+     */
+    @Override
+    public int getStatus() {
+      return status_;
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile Object message_ = "";
+    /**
+     * <code>string message = 2;</code>
+     * @return The message.
+     */
+    @Override
+    public String getMessage() {
+      Object ref = message_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string message = 2;</code>
+     * @return The bytes for message.
+     */
+    @Override
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      Object ref = message_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (status_ != 0) {
+        output.writeInt32(1, status_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (status_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, status_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof AppHealthCheckResponse)) {
+        return super.equals(obj);
+      }
+      AppHealthCheckResponse other = (AppHealthCheckResponse) obj;
+
+      if (getStatus()
+          != other.getStatus()) return false;
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus();
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static AppHealthCheckResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static AppHealthCheckResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static AppHealthCheckResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static AppHealthCheckResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static AppHealthCheckResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static AppHealthCheckResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static AppHealthCheckResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static AppHealthCheckResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static AppHealthCheckResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static AppHealthCheckResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static AppHealthCheckResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static AppHealthCheckResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(AppHealthCheckResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @Override
+    protected Builder newBuilderForType(
+        BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code AppHealthCheckResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:AppHealthCheckResponse)
+        AppHealthCheckResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return HelloApplianceProto.internal_static_AppHealthCheckResponse_descriptor;
+      }
+
+      @Override
+      protected FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return HelloApplianceProto.internal_static_AppHealthCheckResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                AppHealthCheckResponse.class, Builder.class);
+      }
+
+      // Construct using com.appliance.HelloApplianceProto.AppHealthCheckResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          BuilderParent parent) {
+        super(parent);
+
+      }
+      @Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        status_ = 0;
+        message_ = "";
+        return this;
+      }
+
+      @Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return HelloApplianceProto.internal_static_AppHealthCheckResponse_descriptor;
+      }
+
+      @Override
+      public AppHealthCheckResponse getDefaultInstanceForType() {
+        return AppHealthCheckResponse.getDefaultInstance();
+      }
+
+      @Override
+      public AppHealthCheckResponse build() {
+        AppHealthCheckResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @Override
+      public AppHealthCheckResponse buildPartial() {
+        AppHealthCheckResponse result = new AppHealthCheckResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(AppHealthCheckResponse result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.status_ = status_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.message_ = message_;
+        }
+      }
+
+      @Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return super.setField(field, value);
+      }
+      @Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof AppHealthCheckResponse) {
+          return mergeFrom((AppHealthCheckResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(AppHealthCheckResponse other) {
+        if (other == AppHealthCheckResponse.getDefaultInstance()) return this;
+        if (other.getStatus() != 0) {
+          setStatus(other.getStatus());
+        }
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                status_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                message_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int status_ ;
+      /**
+       * <code>int32 status = 1;</code>
+       * @return The status.
+       */
+      @Override
+      public int getStatus() {
+        return status_;
+      }
+      /**
+       * <code>int32 status = 1;</code>
+       * @param value The status to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStatus(int value) {
+
+        status_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 status = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStatus() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        status_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private Object message_ = "";
+      /**
+       * <code>string message = 2;</code>
+       * @return The message.
+       */
+      public String getMessage() {
+        Object ref = message_;
+        if (!(ref instanceof String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      /**
+       * <code>string message = 2;</code>
+       * @return The bytes for message.
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string message = 2;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessage(
+          String value) {
+        if (value == null) { throw new NullPointerException(); }
+        message_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessage() {
+        message_ = getDefaultInstance().getMessage();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 2;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        message_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      @Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:AppHealthCheckResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:AppHealthCheckResponse)
+    private static final AppHealthCheckResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new AppHealthCheckResponse();
+    }
+
+    public static AppHealthCheckResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AppHealthCheckResponse>
+        PARSER = new com.google.protobuf.AbstractParser<AppHealthCheckResponse>() {
+      @Override
+      public AppHealthCheckResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<AppHealthCheckResponse> parser() {
+      return PARSER;
+    }
+
+    @Override
+    public com.google.protobuf.Parser<AppHealthCheckResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @Override
+    public AppHealthCheckResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ApplianceRequest_descriptor;
   private static final 
@@ -1277,6 +2674,16 @@ public final class HelloApplianceProto {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ApplianceResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_AppHealthCheckRequest_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_AppHealthCheckRequest_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_AppHealthCheckResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_AppHealthCheckResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1289,10 +2696,15 @@ public final class HelloApplianceProto {
       "\n\017Appliance.proto\"E\n\020ApplianceRequest\022\025\n" +
       "\rapplianceName\030\001 \001(\t\022\032\n\022applianceOperati" +
       "on\030\002 \001(\t\".\n\021ApplianceResponse\022\031\n\021operati" +
-      "onResponse\030\001 \001(\t2M\n\016HelloAppliance\022;\n\020ap" +
-      "plianceService\022\021.ApplianceRequest\032\022.Appl" +
-      "ianceResponse(\001B&\n\rcom.applianceB\023HelloA" +
-      "pplianceProtoP\000b\006proto3"
+      "onResponse\030\001 \001(\t\"W\n\025AppHealthCheckReques" +
+      "t\022\023\n\013serviceName\030\001 \001(\t\022\026\n\016serviceVersion" +
+      "\030\002 \001(\t\022\021\n\ttimestamp\030\003 \001(\003\"9\n\026AppHealthCh" +
+      "eckResponse\022\016\n\006status\030\001 \001(\005\022\017\n\007message\030\002" +
+      " \001(\t2\217\001\n\016HelloAppliance\022;\n\020applianceServ" +
+      "ice\022\021.ApplianceRequest\032\022.ApplianceRespon" +
+      "se(\001\022@\n\013HealthCheck\022\026.AppHealthCheckRequ" +
+      "est\032\027.AppHealthCheckResponse0\001B&\n\rcom.ap" +
+      "plianceB\023HelloApplianceProtoP\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1310,6 +2722,18 @@ public final class HelloApplianceProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ApplianceResponse_descriptor,
         new String[] { "OperationResponse", });
+    internal_static_AppHealthCheckRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_AppHealthCheckRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_AppHealthCheckRequest_descriptor,
+        new String[] { "ServiceName", "ServiceVersion", "Timestamp", });
+    internal_static_AppHealthCheckResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_AppHealthCheckResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_AppHealthCheckResponse_descriptor,
+        new String[] { "Status", "Message", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

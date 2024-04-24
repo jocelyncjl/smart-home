@@ -46,6 +46,37 @@ public final class HelloApplianceGrpc {
     return getApplianceServiceMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<HelloApplianceProto.AppHealthCheckRequest,
+      HelloApplianceProto.AppHealthCheckResponse> getHealthCheckMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "HealthCheck",
+      requestType = HelloApplianceProto.AppHealthCheckRequest.class,
+      responseType = HelloApplianceProto.AppHealthCheckResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<HelloApplianceProto.AppHealthCheckRequest,
+      HelloApplianceProto.AppHealthCheckResponse> getHealthCheckMethod() {
+    io.grpc.MethodDescriptor<HelloApplianceProto.AppHealthCheckRequest, HelloApplianceProto.AppHealthCheckResponse> getHealthCheckMethod;
+    if ((getHealthCheckMethod = HelloApplianceGrpc.getHealthCheckMethod) == null) {
+      synchronized (HelloApplianceGrpc.class) {
+        if ((getHealthCheckMethod = HelloApplianceGrpc.getHealthCheckMethod) == null) {
+          HelloApplianceGrpc.getHealthCheckMethod = getHealthCheckMethod =
+              io.grpc.MethodDescriptor.<HelloApplianceProto.AppHealthCheckRequest, HelloApplianceProto.AppHealthCheckResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "HealthCheck"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  HelloApplianceProto.AppHealthCheckRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  HelloApplianceProto.AppHealthCheckResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new HelloApplianceMethodDescriptorSupplier("HealthCheck"))
+              .build();
+        }
+      }
+    }
+    return getHealthCheckMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -100,6 +131,16 @@ public final class HelloApplianceGrpc {
         io.grpc.stub.StreamObserver<HelloApplianceProto.ApplianceResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getApplianceServiceMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Server-side streaming RPC for health check
+     * </pre>
+     */
+    default void healthCheck(HelloApplianceProto.AppHealthCheckRequest request,
+                             io.grpc.stub.StreamObserver<HelloApplianceProto.AppHealthCheckResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHealthCheckMethod(), responseObserver);
+    }
   }
 
   /**
@@ -136,6 +177,17 @@ public final class HelloApplianceGrpc {
       return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
           getChannel().newCall(getApplianceServiceMethod(), getCallOptions()), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Server-side streaming RPC for health check
+     * </pre>
+     */
+    public void healthCheck(HelloApplianceProto.AppHealthCheckRequest request,
+                            io.grpc.stub.StreamObserver<HelloApplianceProto.AppHealthCheckResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getHealthCheckMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -152,6 +204,17 @@ public final class HelloApplianceGrpc {
     protected HelloApplianceBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new HelloApplianceBlockingStub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * Server-side streaming RPC for health check
+     * </pre>
+     */
+    public java.util.Iterator<HelloApplianceProto.AppHealthCheckResponse> healthCheck(
+        HelloApplianceProto.AppHealthCheckRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getHealthCheckMethod(), getCallOptions(), request);
     }
   }
 
@@ -172,7 +235,8 @@ public final class HelloApplianceGrpc {
     }
   }
 
-  private static final int METHODID_APPLIANCE_SERVICE = 0;
+  private static final int METHODID_HEALTH_CHECK = 0;
+  private static final int METHODID_APPLIANCE_SERVICE = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -191,6 +255,10 @@ public final class HelloApplianceGrpc {
     @SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_HEALTH_CHECK:
+          serviceImpl.healthCheck((HelloApplianceProto.AppHealthCheckRequest) request,
+              (io.grpc.stub.StreamObserver<HelloApplianceProto.AppHealthCheckResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -219,6 +287,13 @@ public final class HelloApplianceGrpc {
               HelloApplianceProto.ApplianceRequest,
               HelloApplianceProto.ApplianceResponse>(
                 service, METHODID_APPLIANCE_SERVICE)))
+        .addMethod(
+          getHealthCheckMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              HelloApplianceProto.AppHealthCheckRequest,
+              HelloApplianceProto.AppHealthCheckResponse>(
+                service, METHODID_HEALTH_CHECK)))
         .build();
   }
 
@@ -268,6 +343,7 @@ public final class HelloApplianceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new HelloApplianceFileDescriptorSupplier())
               .addMethod(getApplianceServiceMethod())
+              .addMethod(getHealthCheckMethod())
               .build();
         }
       }

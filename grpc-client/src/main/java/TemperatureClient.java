@@ -74,7 +74,6 @@ public class TemperatureClient {
         // Consul host
         String consulHost = "localhost";
         // Consul port
-
         int consulPort = 8500;
         // Name of the service registered in Consul
         String consulServiceName = "temperature-service";
