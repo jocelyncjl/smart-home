@@ -46,6 +46,37 @@ public final class HelloSecurityGrpc {
     return getSecurityServiceMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<HelloSecurityProto.SecurityHealthCheckRequest,
+      HelloSecurityProto.SecurityHealthCheckResponse> getHealthCheckMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "HealthCheck",
+      requestType = HelloSecurityProto.SecurityHealthCheckRequest.class,
+      responseType = HelloSecurityProto.SecurityHealthCheckResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<HelloSecurityProto.SecurityHealthCheckRequest,
+      HelloSecurityProto.SecurityHealthCheckResponse> getHealthCheckMethod() {
+    io.grpc.MethodDescriptor<HelloSecurityProto.SecurityHealthCheckRequest, HelloSecurityProto.SecurityHealthCheckResponse> getHealthCheckMethod;
+    if ((getHealthCheckMethod = HelloSecurityGrpc.getHealthCheckMethod) == null) {
+      synchronized (HelloSecurityGrpc.class) {
+        if ((getHealthCheckMethod = HelloSecurityGrpc.getHealthCheckMethod) == null) {
+          HelloSecurityGrpc.getHealthCheckMethod = getHealthCheckMethod =
+              io.grpc.MethodDescriptor.<HelloSecurityProto.SecurityHealthCheckRequest, HelloSecurityProto.SecurityHealthCheckResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "HealthCheck"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  HelloSecurityProto.SecurityHealthCheckRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  HelloSecurityProto.SecurityHealthCheckResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new HelloSecurityMethodDescriptorSupplier("HealthCheck"))
+              .build();
+        }
+      }
+    }
+    return getHealthCheckMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -100,6 +131,16 @@ public final class HelloSecurityGrpc {
         io.grpc.stub.StreamObserver<HelloSecurityProto.SecurityResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSecurityServiceMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Server-side streaming RPC for health check
+     * </pre>
+     */
+    default void healthCheck(HelloSecurityProto.SecurityHealthCheckRequest request,
+                             io.grpc.stub.StreamObserver<HelloSecurityProto.SecurityHealthCheckResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getHealthCheckMethod(), responseObserver);
+    }
   }
 
   /**
@@ -136,6 +177,17 @@ public final class HelloSecurityGrpc {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getSecurityServiceMethod(), getCallOptions()), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Server-side streaming RPC for health check
+     * </pre>
+     */
+    public void healthCheck(HelloSecurityProto.SecurityHealthCheckRequest request,
+                            io.grpc.stub.StreamObserver<HelloSecurityProto.SecurityHealthCheckResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getHealthCheckMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -152,6 +204,17 @@ public final class HelloSecurityGrpc {
     protected HelloSecurityBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new HelloSecurityBlockingStub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * Server-side streaming RPC for health check
+     * </pre>
+     */
+    public java.util.Iterator<HelloSecurityProto.SecurityHealthCheckResponse> healthCheck(
+        HelloSecurityProto.SecurityHealthCheckRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getHealthCheckMethod(), getCallOptions(), request);
     }
   }
 
@@ -172,7 +235,8 @@ public final class HelloSecurityGrpc {
     }
   }
 
-  private static final int METHODID_SECURITY_SERVICE = 0;
+  private static final int METHODID_HEALTH_CHECK = 0;
+  private static final int METHODID_SECURITY_SERVICE = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -191,6 +255,10 @@ public final class HelloSecurityGrpc {
     @SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_HEALTH_CHECK:
+          serviceImpl.healthCheck((HelloSecurityProto.SecurityHealthCheckRequest) request,
+              (io.grpc.stub.StreamObserver<HelloSecurityProto.SecurityHealthCheckResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -219,6 +287,13 @@ public final class HelloSecurityGrpc {
               HelloSecurityProto.SecurityRequest,
               HelloSecurityProto.SecurityResponse>(
                 service, METHODID_SECURITY_SERVICE)))
+        .addMethod(
+          getHealthCheckMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              HelloSecurityProto.SecurityHealthCheckRequest,
+              HelloSecurityProto.SecurityHealthCheckResponse>(
+                service, METHODID_HEALTH_CHECK)))
         .build();
   }
 
@@ -268,6 +343,7 @@ public final class HelloSecurityGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new HelloSecurityFileDescriptorSupplier())
               .addMethod(getSecurityServiceMethod())
+              .addMethod(getHealthCheckMethod())
               .build();
         }
       }

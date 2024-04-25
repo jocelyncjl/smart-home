@@ -15,6 +15,19 @@ message SecurityResponse{
   string operationsTwo = 4;
 }
 
+message SecurityHealthCheckRequest {
+  string serviceName = 1;
+  string serviceVersion = 2;
+  int64 timestamp = 3;
+}
+
+message SecurityHealthCheckResponse {
+  int32 status = 1;
+  string message = 2;
+}
+
 service HelloSecurity{
   rpc securityService(stream SecurityRequest)  returns ( stream SecurityResponse);
+  // Server-side streaming RPC for health check
+  rpc HealthCheck(SecurityHealthCheckRequest) returns (stream SecurityHealthCheckResponse);
 }
