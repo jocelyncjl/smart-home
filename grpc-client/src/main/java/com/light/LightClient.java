@@ -1,3 +1,5 @@
+package com.light;
+
 import com.ecwid.consul.v1.ConsulClient;
 import com.ecwid.consul.v1.health.model.HealthService;
 import com.light.HelloLightGrpc;

@@ -19,7 +19,7 @@ public class LightServer {
     // The method to start the grpc light server
     private void start() throws IOException {
         // The port on which the server should run
-        int port = 8080;
+        int port = 8081;
         // Create the grpc service instance and add service
         server = ServerBuilder.forPort(port).addService(new LightServiceImpl()).build().start();
         // Output the server launch information
@@ -125,10 +125,6 @@ public class LightServer {
             responseObserver.onCompleted();
         }
 
-
     }
-
-
-
 
 }
