@@ -1,14 +1,11 @@
-import com.appliance.HelloApplianceGrpc;
-import com.appliance.HelloApplianceProto;
+package com.appliance;
+
 import com.ecwid.consul.v1.ConsulClient;
 import com.ecwid.consul.v1.health.model.HealthService;
-import com.temperature.HelloTemperatureGrpc;
-import com.temperature.HelloTemperatureProto;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 

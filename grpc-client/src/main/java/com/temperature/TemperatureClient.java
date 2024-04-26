@@ -1,7 +1,7 @@
+package com.temperature;
+
 import com.ecwid.consul.v1.ConsulClient;
 import com.ecwid.consul.v1.health.model.HealthService;
-import com.temperature.HelloTemperatureGrpc;
-import com.temperature.HelloTemperatureProto;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 

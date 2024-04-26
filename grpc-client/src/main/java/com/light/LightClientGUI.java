@@ -15,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class LightClientGUI extends Application {
     private ConsulClient consulClient;
@@ -41,7 +42,7 @@ public class LightClientGUI extends Application {
         textArea.setEditable(false);
         textArea.setWrapText(true);
 
-        Button requestButton = new Button("Make Light Request");
+        Button requestButton = new Button("Increase the light brightness of the table lamp");
         requestButton.setOnAction(e -> makeLightRequest());
 
         VBox vbox = new VBox(10);
@@ -54,38 +55,51 @@ public class LightClientGUI extends Application {
     }
 
     private void makeLightRequest() {
-        // Lookup service details from Consul
-        List<HealthService> healthServices = consulClient.getHealthServices(consulServiceName, true, null).getValue();
-        if (healthServices.isEmpty()) {
-            appendText("No healthy instances of " + consulServiceName + " found in Consul.");
-            return;
+        appendText("Sending request...");
+
+        long deadlineMs = 5000;
+
+        try {
+            // Lookup service details from Consul
+            List<HealthService> healthServices = consulClient.getHealthServices(consulServiceName, true, null).getValue();
+            if (healthServices.isEmpty()) {
+                appendText("No healthy instances of " + consulServiceName + " found in Consul.");
+                return;
+            }
+
+            // Pick the first healthy instance (you can implement a load balancing strategy here)
+            HealthService healthService = healthServices.get(0);
+
+            // Extract host and port from the service details
+            String serverHost = healthService.getService().getAddress();
+            int serverPort = healthService.getService().getPort();
+
+            // Create a gRPC channel to connect to the server
+            ManagedChannel channel = ManagedChannelBuilder.forAddress(serverHost, serverPort)
+                    .usePlaintext()
+                    .build();
+
+            // Create a stub for the gRPC service
+            HelloLightGrpc.HelloLightBlockingStub lightStub = HelloLightGrpc.newBlockingStub(channel)
+                    .withDeadlineAfter(deadlineMs, TimeUnit.MILLISECONDS);
+
+            // Prepare and send the unary request
+            HelloLightProto.LightRequest lightRequest = HelloLightProto.LightRequest.newBuilder()
+                    .setLightcall("Please help me increase the light brightness of the table lamp")
+                    .build();
+            HelloLightProto.LightResponse lightResponse = lightStub.lightService(lightRequest);
+
+            // Process the response
+            String lightResult = lightResponse.getLightResult();
+            appendText("Response: " + lightResult);
+
+            // Shutdown the channel when done
+            channel.shutdown();
+        } catch (Exception e) {
+            appendText("Error: " + e.getMessage());
+        } finally {
+            appendText("Request completed.");
         }
-
-        // Pick the first healthy instance (you can implement a load balancing strategy here)
-        HealthService healthService = healthServices.get(0);
-
-        // Extract host and port from the service details
-        String serverHost = healthService.getService().getAddress();
-        int serverPort = healthService.getService().getPort();
-
-        // Create a gRPC channel to connect to the server
-        ManagedChannel channel = ManagedChannelBuilder.forAddress(serverHost, serverPort).usePlaintext().build();
-
-        // Create a stub for the gRPC service
-        HelloLightGrpc.HelloLightBlockingStub lightStub = HelloLightGrpc.newBlockingStub(channel);
-
-        // Prepare and send the unary request
-        HelloLightProto.LightRequest lightRequest = HelloLightProto.LightRequest.newBuilder()
-                .setLightcall("Please help me increase the light brightness of the table lamp")
-                .build();
-        HelloLightProto.LightResponse lightResponse = lightStub.lightService(lightRequest);
-
-        // Process the response
-        String lightResult = lightResponse.getLightResult();
-        appendText("Response: " + lightResult);
-
-        // Shutdown the channel when done
-        channel.shutdown();
     }
 
     private void appendText(String text) {
