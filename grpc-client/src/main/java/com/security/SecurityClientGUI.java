@@ -14,12 +14,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class SecurityClientGUI extends Application {
     private ConsulClient consulClient;
     private String consulServiceName;
     private TextArea textArea;
+    private Button turnOnButton;
+    private Button turnOffButton;
 
     private StreamObserver<HelloSecurityProto.SecurityRequest> securityRequestStreamObserver;
 
@@ -43,16 +44,22 @@ public class SecurityClientGUI extends Application {
         textArea.setEditable(false);
         textArea.setWrapText(true);
 
-        Button startButton = new Button("Start Security");
-        startButton.setOnAction(e -> makeSecurityRequest());
+        turnOnButton = new Button("Turn on the camera and alarm");
+        turnOnButton.setOnAction(e -> sendTurnOnRequest());
+
+        turnOffButton = new Button("Turn off the camera and alarm");
+        turnOffButton.setOnAction(e -> sendTurnOffRequest());
+        turnOffButton.setDisable(true);
 
         VBox vbox = new VBox(10);
         vbox.setPadding(new Insets(10));
-        vbox.getChildren().addAll(textArea, startButton);
+        vbox.getChildren().addAll(textArea, turnOnButton, turnOffButton);
 
         Scene scene = new Scene(vbox, 400, 300);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        makeSecurityRequest();
     }
 
     private void makeSecurityRequest() {
@@ -80,23 +87,21 @@ public class SecurityClientGUI extends Application {
         securityRequestStreamObserver = securityStub.securityService(new StreamObserver<HelloSecurityProto.SecurityResponse>() {
             @Override
             public void onNext(HelloSecurityProto.SecurityResponse securityResponse) {
-                // The client sends the command as it accepts danger warning info from the server
                 if (!securityResponse.getWarnings().isEmpty()) {
                     appendText(securityResponse.getWarnings());
-                    securityRequestStreamObserver.onNext(HelloSecurityProto.SecurityRequest.newBuilder().setOnInstructs("Turn on the camera and alarm").build());
+                    turnOnButton.setDisable(false);
                 }
-                // The client accepts data from the server as it completes operation successfully
                 if (!securityResponse.getOperations().isEmpty()) {
                     appendText(securityResponse.getOperations());
                 }
-                // The client accepts danger lift tips from the server and sends another command to the server
                 if (!securityResponse.getDangerRemove().isEmpty()) {
                     appendText(securityResponse.getDangerRemove());
-                    securityRequestStreamObserver.onNext(HelloSecurityProto.SecurityRequest.newBuilder().setOffInstructs("Turn off the camera and alarm").build());
+                    turnOnButton.setDisable(true);
+                    turnOffButton.setDisable(false);
                 }
-                // The client accepts the successful operations from the server and client requests end
                 if (!securityResponse.getOperationsTwo().isEmpty()) {
                     appendText(securityResponse.getOperationsTwo());
+                    turnOffButton.setDisable(true);
                     securityRequestStreamObserver.onCompleted();
                 }
             }
@@ -111,9 +116,14 @@ public class SecurityClientGUI extends Application {
                 appendText("Security request completed.");
             }
         });
+    }
 
-        // Shutdown the channel when done
-        channel.shutdown();
+    private void sendTurnOnRequest() {
+        securityRequestStreamObserver.onNext(HelloSecurityProto.SecurityRequest.newBuilder().setOnInstructs("Turn on the camera and alarm").build());
+    }
+
+    private void sendTurnOffRequest() {
+        securityRequestStreamObserver.onNext(HelloSecurityProto.SecurityRequest.newBuilder().setOffInstructs("Turn off the camera and alarm").build());
     }
 
     private void appendText(String text) {

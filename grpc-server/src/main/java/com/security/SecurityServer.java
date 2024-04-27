@@ -2,7 +2,6 @@ package com.security;
 
 import com.ecwid.consul.v1.ConsulClient;
 import com.ecwid.consul.v1.agent.model.NewService;
-import com.temperature.TemperatureServer;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -22,10 +21,10 @@ public class SecurityServer {
         // The port on which the server should run
         int port = 8060;
         // Create the grpc service instance and add service
-        securityServer = ServerBuilder.forPort(port).addService(new SecurityServer.SecurityServiceImpl()).build().start();
+        securityServer = ServerBuilder.forPort(port).addService(new SecurityServiceImpl()).build().start();
         // Output the server launch information
-        System.out.println("The Temperature Server started, listening on " + port);
-        // Register the temperature server the consul
+        System.out.println("The Security Server started, listening on " + port);
+        // Register the security server the consul
         registerToConsul();
         // Add shutdown hook
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
@@ -69,8 +68,6 @@ public class SecurityServer {
         String serviceName = props.getProperty("consul.service.name");
         // Service port
         int servicePort = Integer.parseInt(props.getProperty("consul.service.port"));
-        // Health check interval
-        String healthCheckInterval = props.getProperty("consul.service.healthCheckInterval");
         // Gain host address
         String hostAddress = null;
         try {
@@ -98,31 +95,32 @@ public class SecurityServer {
         securityServer.blockUntilShutDown();
     }
 
-    static class SecurityServiceImpl extends HelloSecurityGrpc.HelloSecurityImplBase{
+    static class SecurityServiceImpl extends HelloSecurityGrpc.HelloSecurityImplBase {
         public StreamObserver<HelloSecurityProto.SecurityRequest> securityService(StreamObserver<HelloSecurityProto.SecurityResponse> responseObserver) {
-            // The server sends the security warning to the client as it detects some danger
             responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setWarnings("Detecting an unidentified person entering").build());
             return new StreamObserver<HelloSecurityProto.SecurityRequest>() {
                 @Override
                 public void onNext(HelloSecurityProto.SecurityRequest securityRequest) {
-                    // The server write commands sent to the client as it accepts info "Turn on the camera and alarm" from the client
                     if (securityRequest.getOnInstructs().equals("Turn on the camera and alarm")) {
                         System.out.println(securityRequest.getOnInstructs());
                         responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setOperations("Turn on the camera and alarm successfully").build());
+                        try {
+                            Thread.sleep(2000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setDangerRemove("The unknown person has already left").build());
                     }
-                    // The server write operation info "Turn off the camera and alarm successfully" back to the client as it accepts "Turn off" command
                     if (securityRequest.getOffInstructs().equals("Turn off the camera and alarm")) {
                         System.out.println(securityRequest.getOffInstructs());
                         responseObserver.onNext(HelloSecurityProto.SecurityResponse.newBuilder().setOperationsTwo("Turn off the camera and alarm successfully").build());
                         responseObserver.onCompleted();
                     }
-
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
-
+                    System.err.println("Error in security service: " + throwable.getMessage());
                 }
 
                 @Override
@@ -130,12 +128,12 @@ public class SecurityServer {
                     responseObserver.onCompleted();
                 }
             };
-
         }
 
         @Override
         public void healthCheck(HelloSecurityProto.SecurityHealthCheckRequest request, StreamObserver<HelloSecurityProto.SecurityHealthCheckResponse> responseObserver) {
-            super.healthCheck(request, responseObserver);
+            responseObserver.onNext(HelloSecurityProto.SecurityHealthCheckResponse.newBuilder().setStatus(200).build());
+            responseObserver.onCompleted();
         }
     }
 }
