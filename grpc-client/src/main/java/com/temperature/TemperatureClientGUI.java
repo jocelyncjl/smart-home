@@ -73,18 +73,23 @@ public class TemperatureClientGUI extends Application {
         // Create a stub for the gRPC service
         HelloTemperatureGrpc.HelloTemperatureBlockingStub tempService = HelloTemperatureGrpc.newBlockingStub(channel);
 
-        // Prepare and send the unary request
-        HelloTemperatureProto.TemperatureRequest.Builder builder = HelloTemperatureProto.TemperatureRequest.newBuilder();
-        builder.setTempCall("Please help me monitor the temperature of different home areas at the current time");
-        HelloTemperatureProto.TemperatureRequest tempRequest = builder.build();
-        Iterator<HelloTemperatureProto.TemperatureResponse> tempResponseIterator = tempService.temperatureService(tempRequest);
+        try{
+            // Prepare and send the unary request
+            HelloTemperatureProto.TemperatureRequest.Builder builder = HelloTemperatureProto.TemperatureRequest.newBuilder();
+            builder.setTempCall("Please help me monitor the temperature of different home areas at current time");
+            HelloTemperatureProto.TemperatureRequest tempRequest = builder.build();
+            Iterator<HelloTemperatureProto.TemperatureResponse> tempResponseIterator = tempService.temperatureService(tempRequest);
 
-        // Process the response
-        while (tempResponseIterator.hasNext()) {
-            HelloTemperatureProto.TemperatureResponse tempResponse = tempResponseIterator.next();
-            String homeArea = tempResponse.getHomeArea();
-            double degreeCelsius = tempResponse.getDegreeCelsius();
-            appendText("The temperature in the " + homeArea + " is " + degreeCelsius + "°C");
+            // Process the response
+            while (tempResponseIterator.hasNext()) {
+                HelloTemperatureProto.TemperatureResponse tempResponse = tempResponseIterator.next();
+                String homeArea = tempResponse.getHomeArea();
+                double degreeCelsius = tempResponse.getDegreeCelsius();
+                appendText("The temperature in the " + homeArea + " is " + degreeCelsius + "°C");
+            }
+        }catch(Exception e){
+            appendText("Error: " + e.getMessage());
+            e.printStackTrace();
         }
 
         // Shutdown the channel when done

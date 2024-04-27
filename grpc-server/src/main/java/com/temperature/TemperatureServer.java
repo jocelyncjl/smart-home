@@ -11,7 +11,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Properties;
+
 
 public class TemperatureServer{
     // Create the grpc server variable to store the server object
@@ -92,10 +94,41 @@ public class TemperatureServer{
     }
 
     // The main method to start the server
+    // Create the ArrayList object
+    private static final ArrayList<Temperature> tempList = new ArrayList<>();
     public static void main(String[] args) throws IOException, InterruptedException {
+        // Add home areas and temperature figures into the arraylist
+        tempList.add(new Temperature("Living Room",23.00));
+        tempList.add(new Temperature("Kitchen",28.00));
+        tempList.add(new Temperature("Bedroom",30.00));
+
         final TemperatureServer tempServer = new TemperatureServer();
         tempServer.start();
         tempServer.blockUntilShutDown();
+
+    }
+
+    static class Temperature {
+        // Define variables homeArea and temp
+        private String homeArea;
+        private Double temp;
+
+        // Constructor
+        public Temperature(String homeArea,Double temp){
+            this.homeArea = homeArea;
+            this.temp = temp;
+
+        }
+
+        // Set get method
+        public String getHomeArea(){
+            return this.homeArea;
+        }
+
+        public Double getTemp(){
+            return this.temp;
+        }
+
     }
 
     static class TemperatureServerImpl extends HelloTemperatureGrpc.HelloTemperatureImplBase{
@@ -109,8 +142,8 @@ public class TemperatureServer{
                 if(i == 0){
                     // Create the builder and fill message with home area and temperature
                     HelloTemperatureProto.TemperatureResponse.Builder builder = HelloTemperatureProto.TemperatureResponse.newBuilder();
-                    builder.setHomeArea("living room");
-                    builder.setDegreeCelsius(23);
+                    builder.setHomeArea(tempList.get(0).getHomeArea());
+                    builder.setDegreeCelsius(tempList.get(0).getTemp());
                     i++;
                     HelloTemperatureProto.TemperatureResponse tempResponse = builder.build();
                     // Deliver the response variable to the observer
@@ -125,8 +158,8 @@ public class TemperatureServer{
                 if(i == 1){
                     // Create the builder and fill message with home area and temperature
                     HelloTemperatureProto.TemperatureResponse.Builder builderTwo = HelloTemperatureProto.TemperatureResponse.newBuilder();
-                    builderTwo.setHomeArea("kitchen");
-                    builderTwo.setDegreeCelsius(35);
+                    builderTwo.setHomeArea(tempList.get(1).getHomeArea());
+                    builderTwo.setDegreeCelsius(tempList.get(1).getTemp());
                     i++;
                     HelloTemperatureProto.TemperatureResponse tempResponseTwo = builderTwo.build();
                     // Deliver the response variable to the observer
@@ -141,8 +174,8 @@ public class TemperatureServer{
                 if(i == 2){
                     // Create the builder and fill message with home area and temperature
                     HelloTemperatureProto.TemperatureResponse.Builder builderThree = HelloTemperatureProto.TemperatureResponse.newBuilder();
-                    builderThree.setHomeArea("bedroom");
-                    builderThree.setDegreeCelsius(28);
+                    builderThree.setHomeArea(tempList.get(2).getHomeArea());
+                    builderThree.setDegreeCelsius(tempList.get(2).getTemp());
                     i++;
                     HelloTemperatureProto.TemperatureResponse tempResponseThree = builderThree.build();
                     // Deliver the response variable to the observer
